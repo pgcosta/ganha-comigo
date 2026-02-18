@@ -18,10 +18,18 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  // GitHub Pages configuration for pgcost.github.io/ganha-comigo/
-  base: mode === "development" ? "/" : "/ganha-comigo/",
+  // Git Hub Pages configuration
+  base: "/ganha-comigo/",
   build: {
     outDir: "dist",
-    sourcemap: true,
+    sourcemap: false, // Disable for production size
+    // Ensure all assets go to correct relative paths for GH Pages
+    rollupOptions: {
+      output: {
+        assetFileNames: '[name].[ext][hash]',
+        chunkFileNames: '[name].[hash].js',
+        entryFileNames: '[name].[hash].js'  
+      }
+    }
   },
 }));
