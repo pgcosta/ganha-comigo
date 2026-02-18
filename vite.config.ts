@@ -18,4 +18,10 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  // GitHub Pages configuration for pgcost.github.io/ganha-comigo/
+  base: mode === "development" ? "/" : "/ganha-comigo/",
+  build: {
+    outDir: "dist",
+    sourcemap: true,
+  },
 }));
