@@ -4,6 +4,10 @@ import path from "path";
 
 export default defineConfig({
   plugins: [react()],
+  base: "/ganha-comigo/",
+  build: {
+    outDir: "docs"
+  }
   test: {
     environment: "jsdom",
     globals: true,
