@@ -45,6 +45,7 @@ export const CodeCard = () => {
           className="text-primary text-sm mt-2 font-medium"
         >
           Código copiado! 🎉
+          Fornece o código ao Montepio
         </motion.p>
       )}
     </motion.div>

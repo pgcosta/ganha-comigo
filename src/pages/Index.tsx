@@ -32,10 +32,10 @@ const Index = () => {
           <div className="text-6xl mb-4">🏠💰</div>
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4 leading-tight">
             Transfere o teu <span className="text-gradient">Crédito Habitação</span> e ganha{" "}
-            <span className="text-gradient">300 €</span>!
+            <span className="text-gradient">€300</span>!
           </h1>
           <p className="text-lg text-muted-foreground max-w-lg mx-auto">
-            Campanha oficial do{" "}
+            Campanha Member Get Member do{" "}
             <a
               href="https://www.bancomontepio.pt/particulares/credito/credito-habitacao/transferencia-credito"
               target="_blank"
@@ -44,7 +44,10 @@ const Index = () => {
             >
               Banco Montepio
             </a>
-            . Usa o meu código de referência e ganhamos os dois! 🎉
+            .
+          </p>
+          <p className="text-lg text-muted-foreground max-w-lg mx-auto mt-4">
+             Fala com o teu gestor e ganhamos os dois! 🎉
           </p>
           <p className="text-sm text-muted-foreground mt-2 flex items-center justify-center gap-1.5">
             <ShieldCheck className="w-4 h-4 text-primary" />
