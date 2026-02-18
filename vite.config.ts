@@ -21,7 +21,7 @@ export default defineConfig(({ mode }) => ({
   // Git Hub Pages configuration
   base: "/ganha-comigo/",
   build: {
-    outDir: "dist",
+    outDir: "docs",
     sourcemap: false, // Disable for production size
     // Ensure all assets go to correct relative paths for GH Pages
     rollupOptions: {
