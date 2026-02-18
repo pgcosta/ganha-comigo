@@ -6,7 +6,8 @@ export default defineConfig({
   plugins: [react()],
   base: "/ganha-comigo/",
   build: {
-    outDir: "docs"
+    outDir: "docs",
+    emptyOutDir: true,
   },
   test: {
     environment: "jsdom",

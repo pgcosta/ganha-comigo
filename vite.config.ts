@@ -19,7 +19,7 @@ export default defineConfig(({ mode }) => ({
     },
   },
   // Git Hub Pages configuration
-  base: "/ganha-comigo/",
+  base: "/docs/",
   build: {
     outDir: "dist",
     sourcemap: false, // Disable for production size
