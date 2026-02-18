@@ -1,8 +1,38 @@
-# Welcome to your Lovable project
+# Ganha Comigo - Banco Montepio
 
-## Project info
+Página web para promover o código de referência do Banco Montepio - Ganhe 300€!
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Sobre
+
+Transforme o seu crédito habituação para o Banco Montepio e ganhe 300€ em cartão pré-pago.
+
+**Código de Referência:** 902CCM480
+
+## Tecnologia Utilizada
+
+- **Vite** - Build tool e desenvolvimento
+- **React** com TypeScript
+- **Tailwind CSS** - Estilização 
+- **shadcn/ui** - Componentes UI
+
+**Nota de Segurança**: O email no site utiliza obfuscação para prevenir scraping automático.
+
+## Como Usar
+
+```tsx
+import EmailHider from '@/components/EmailHider';
+
+// O email é montado dinamicamente - impossível de ler no source
+<EmailHider 
+  username="pedro"
+  middle="gustavo"    
+  middle="costa"
+  domain="gmail"
+  buttonText="💬 Contact me"
+/>
+```
+
+**URL Lovable**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
 
 ## How can I edit this code?
 
