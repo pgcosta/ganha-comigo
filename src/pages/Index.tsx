@@ -4,8 +4,8 @@ import { ConfettiBackground } from "@/components/ConfettiBackground";
 import { CodeCard } from "@/components/CodeCard";
 import { BenefitCard } from "@/components/BenefitCard";
 import { CountdownBadge } from "@/components/CountdownBadge";
-import { ExternalLink, AlertTriangle, CreditCard, Send, CheckCircle, ShieldCheck } from "lucide-react";
-import { Input } from "@/components/ui/input";
+import { SlotsAvailability } from "@/components/SlotsAvailability";
+import { ExternalLink, AlertTriangle, CreditCard, ShieldCheck } from "lucide-react";
 
 const Index = () => {
   const [email, setEmail] = useState("");
@@ -58,6 +58,8 @@ const Index = () => {
         <CountdownBadge />
         <CodeCard />
 
+        <SlotsAvailability availableSlots={5} totalSlots={5}/>
+
         {/* Benefits Section */}
         <div className="mt-12 space-y-6">
           <motion.h2
@@ -107,61 +109,6 @@ const Index = () => {
             </BenefitCard>
           </div>
         </div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          className="mt-12 text-center"
-        >
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-            Reserva a tua vaga! 🚀
-          </h2>
-          <p className="text-muted-foreground mb-6">
-            Só tenho <strong className="text-foreground">5 vagas disponíveis</strong>. Deixa o teu
-            email e eu entro em contacto contigo!
-          </p>
-
-          {submitted ? (
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              className="inline-flex items-center gap-2 bg-primary/10 text-primary font-semibold px-6 py-4 rounded-2xl"
-            >
-              <CheckCircle className="w-5 h-5" />
-              Obrigado! Vou contactar-te em breve 🎉
-            </motion.div>
-          ) : (
-            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <Input
-                type="email"
-                required
-                placeholder="o-teu@email.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 h-12 rounded-xl text-base"
-              />
-              <button
-                type="submit"
-                className="inline-flex items-center justify-center gap-2 bg-hero-gradient text-primary-foreground font-bold px-6 py-3 rounded-xl text-base hover:opacity-90 transition-opacity shadow-lg whitespace-nowrap"
-              >
-                <Send className="w-5 h-5" />
-                Reservar Vaga
-              </button>
-            </form>
-          )}
-
-          <a
-            href="https://www.bancomontepio.pt/particulares/credito/credito-habitacao/transferencia-credito"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-4 inline-flex items-center gap-2 text-primary font-semibold hover:underline text-sm"
-          >
-            <ExternalLink className="w-4 h-4" />
-            Ver condições de Transferência de Crédito Habitação
-          </a>
-        </motion.div>
 
         {/* Fine Print */}
         <motion.div
