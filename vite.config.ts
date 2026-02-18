@@ -26,9 +26,9 @@ export default defineConfig(({ mode }) => ({
     // Ensure all assets go to correct relative paths for GH Pages
     rollupOptions: {
       output: {
-        assetFileNames: '[name].[ext][hash]',
-        chunkFileNames: '[name].[hash].js',
-        entryFileNames: '[name].[hash].js'  
+        assetFileNames: 'assets/[name].[hash][extname]',
+        chunkFileNames: 'assets/[name].[hash].js',
+        entryFileNames: 'assets/[name].[hash].js',
       }
     }
   },
