@@ -7,7 +7,7 @@ export default defineConfig({
   base: "/ganha-comigo/",
   build: {
     outDir: "docs"
-  }
+  },
   test: {
     environment: "jsdom",
     globals: true,
