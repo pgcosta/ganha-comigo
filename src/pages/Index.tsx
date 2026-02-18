@@ -1,11 +1,23 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 import { ConfettiBackground } from "@/components/ConfettiBackground";
 import { CodeCard } from "@/components/CodeCard";
 import { BenefitCard } from "@/components/BenefitCard";
 import { CountdownBadge } from "@/components/CountdownBadge";
-import { Mail, ExternalLink, AlertTriangle, CreditCard } from "lucide-react";
+import { ExternalLink, AlertTriangle, CreditCard, Send, CheckCircle, ShieldCheck } from "lucide-react";
+import { Input } from "@/components/ui/input";
 
 const Index = () => {
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email.trim()) return;
+    window.location.href = `mailto:pedrogustavocosta@gmail.com?subject=Quero%20usar%20o%20c%C3%B3digo%20902CCM480!&body=Ol%C3%A1!%20Quero%20reservar%20a%20minha%20vaga%20para%20transfer%C3%AAncia%20de%20cr%C3%A9dito%20habita%C3%A7%C3%A3o%20com%20o%20c%C3%B3digo%20902CCM480.%0A%0AO%20meu%20email%20de%20contacto%3A%20${encodeURIComponent(email)}`;
+    setSubmitted(true);
+  };
+
   return (
     <div className="min-h-screen relative overflow-hidden">
       <ConfettiBackground />
@@ -23,7 +35,20 @@ const Index = () => {
             <span className="text-gradient">300 €</span>!
           </h1>
           <p className="text-lg text-muted-foreground max-w-lg mx-auto">
-            Usa o meu código de referência no Banco Montepio e ganhamos os dois! 🎉
+            Campanha oficial do{" "}
+            <a
+              href="https://www.bancomontepio.pt/particulares/credito/credito-habitacao/transferencia-credito"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary font-semibold hover:underline"
+            >
+              Banco Montepio
+            </a>
+            . Usa o meu código de referência e ganhamos os dois! 🎉
+          </p>
+          <p className="text-sm text-muted-foreground mt-2 flex items-center justify-center gap-1.5">
+            <ShieldCheck className="w-4 h-4 text-primary" />
+            Sou cliente Montepio e esta é uma campanha oficial do banco.
           </p>
         </motion.div>
 
@@ -65,6 +90,17 @@ const Index = () => {
                 </strong>{" "}
                 num cartão para usar nas lojas Worten (físicas e online)!
               </p>
+              <div className="mt-3 bg-primary/10 rounded-xl p-3 text-sm">
+                <p className="font-semibold text-foreground">💡 Exemplo prático:</p>
+                <p>
+                  Crédito de <strong className="text-foreground">150.000 €</strong> → recebes{" "}
+                  <strong className="text-foreground">1.500 € em cartão Worten</strong>
+                </p>
+                <p>
+                  Crédito de <strong className="text-foreground">300.000 €</strong> → recebes{" "}
+                  <strong className="text-foreground">3.000 € em cartão Worten</strong> 🤯
+                </p>
+              </div>
             </BenefitCard>
           </div>
         </div>
@@ -80,26 +116,47 @@ const Index = () => {
             Reserva a tua vaga! 🚀
           </h2>
           <p className="text-muted-foreground mb-6">
-            Só tenho <strong className="text-foreground">5 vagas disponíveis</strong>. Envia-me um
-            email para garantir a tua!
+            Só tenho <strong className="text-foreground">5 vagas disponíveis</strong>. Deixa o teu
+            email e eu entro em contacto contigo!
           </p>
 
-          <a
-            href="mailto:pedrogustavocosta@gmail.com?subject=Quero%20usar%20o%20c%C3%B3digo%20902CCM480!&body=Ol%C3%A1!%20Quero%20reservar%20a%20minha%20vaga%20para%20transfer%C3%AAncia%20de%20cr%C3%A9dito%20habita%C3%A7%C3%A3o%20com%20o%20c%C3%B3digo%20902CCM480."
-            className="inline-flex items-center gap-2 bg-hero-gradient text-primary-foreground font-bold px-8 py-4 rounded-2xl text-lg hover:opacity-90 transition-opacity shadow-lg"
-          >
-            <Mail className="w-5 h-5" />
-            Enviar Email Agora
-          </a>
+          {submitted ? (
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              className="inline-flex items-center gap-2 bg-primary/10 text-primary font-semibold px-6 py-4 rounded-2xl"
+            >
+              <CheckCircle className="w-5 h-5" />
+              Obrigado! Vou contactar-te em breve 🎉
+            </motion.div>
+          ) : (
+            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+              <Input
+                type="email"
+                required
+                placeholder="o-teu@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="flex-1 h-12 rounded-xl text-base"
+              />
+              <button
+                type="submit"
+                className="inline-flex items-center justify-center gap-2 bg-hero-gradient text-primary-foreground font-bold px-6 py-3 rounded-xl text-base hover:opacity-90 transition-opacity shadow-lg whitespace-nowrap"
+              >
+                <Send className="w-5 h-5" />
+                Reservar Vaga
+              </button>
+            </form>
+          )}
 
           <a
-            href="https://www.bancomontepio.pt/credito-habitacao-worten"
+            href="https://www.bancomontepio.pt/particulares/credito/credito-habitacao/transferencia-credito"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-4 inline-flex items-center gap-2 text-primary font-semibold hover:underline text-sm"
           >
             <ExternalLink className="w-4 h-4" />
-            Ver condições das Soluções Habitação
+            Ver condições de Transferência de Crédito Habitação
           </a>
         </motion.div>
 
